@@ -6,6 +6,12 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon src/index.js",
+    "db:drop": "sequelize db:drop",
+    "db:create": "sequelize db:create",
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "sequelize db:migrate:undo",
+    "db:seed": "sequelize-cli db:seed:all",
+    "db:seed:undo": "sequelize-cli db:seed:undo:all",
     "reset-db": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize-cli db:seed:all"
   },
   "keywords": [],
