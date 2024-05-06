@@ -15,7 +15,7 @@ module.exports = {
      * }], {});
     */
     const roles = await queryInterface.sequelize.query(
-      `SELECT * FROM roles WHERE name IN ('Administrator', 'User');`
+      `SELECT * FROM roles WHERE name IN ('Administrator', 'Employee');`
     );
 
     const roleMap = roles[0].reduce((acc, role) => {
@@ -38,7 +38,7 @@ module.exports = {
       },
       {
         id: uuidv4(),
-        role_id: roleMap['User'],
+        role_id: roleMap['Employee'],
         first_name: 'norrico gerald',
         last_name: 'biason',
         middle_name: 'mendones',

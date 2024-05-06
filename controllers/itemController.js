@@ -3,45 +3,117 @@ const {Item, User} = require('../models')
 async function getItems(req, res) {
     try {
         const items = await Item.findAll();
-        // include: [{
-            //     model: User,
-            //     as: 'user'
-            // }],
         return res.json({msg: 'Success', data: items})
     } catch (error) {
-        console.log('error: ', error)
+        console.log('error get items: ', error)
         return error
     }
 }
 
 async function getItem(req, res) {
+    const itemId = req.params.id
     try {
-        return res.status(200).json({message: 'single Item'})
+        const item = await Item.findByPk(itemId)
+        if (!item) return res.json({message: 'Item not found!'})
+        return res.json({message: 'Success', data: item})
     } catch (error) {
+        console.log('error get item')
         return error
     }
 }
 
 async function createItem(req, res) {
+    const {
+        sku,
+        qty,
+        minStockLvl,
+        category,
+        title,
+        slug,
+        short_description,
+        description,
+        cost,
+        price,
+        discounted_price,
+        tag,
+        status,
+        batch_no,
+    } = req.body;
     try {
-        return res.status(201).json({message: 'create Item'})
+        // PLEASE HANDLE VALIDATION IN FRONTEND
+        const createdItem = await Item.create({
+            sku,
+            qty,
+            minStockLvl,
+            category,
+            title,
+            slug,
+            short_description,
+            description,
+            cost,
+            price,
+            discounted_price,
+            tag,
+            status,
+            batch_no,
+        })
+        return res.json({message: 'Item successfully created', data: createdItem})
     } catch (error) {
+        console.log('error create item: ', error)
         return error
     }
 }
 
 async function updateItem(req, res) {
+    const itemId = req.params.id
+    const {
+        sku,
+        qty,
+        minStockLvl,
+        category,
+        title,
+        slug,
+        short_description,
+        description,
+        cost,
+        price,
+        discounted_price,
+        tag,
+        status,
+        batch_no,
+    } = req.body;
     try {
-        return res.status(200).json({message: 'update Item'})
+        const item = await Item.findByPk(itemId)
+        if (!item) return res.json({message: 'Item not found!'})
+        item.sku = sku
+        item.qty = qty
+        item.minStockLvl = minStockLvl
+        item.category = category
+        item.title = title
+        item.slug = slug
+        item.short_description = short_description
+        item.description = description
+        item.cost = cost
+        item.price = price
+        item.discounted_price = discounted_price
+        item.tag = tag
+        item.status = status
+        item.batch_no = batch_no
+        const updatedItem = await item.save()
+        return res.json({message: 'Update item successfully', data: updatedItem})
     } catch (error) {
+        console.log('error update item: ', error)
         return error
     }
 }
 
 async function deleteItem(req, res) {
+    const itemId = req.params.id
     try {
-        return res.status(200).json({message: 'delete Item'})
+        const deletedItem = await Item.destroy({where: {id: itemId}})
+        return res.json({message: 'Delete item successfully', data: deletedItem})
     } catch (error) {
+        console.log('error delete item: ', error)
         return error
     }
 }

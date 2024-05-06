@@ -19,12 +19,11 @@ async function registerUser(req, res) {
 async function loginUser(req, res) {
     const {email, password} = req.body
     try {
-        console.log(email, password)
        const user = await User.findOne({where: {email}})
        const isMatchPassword = await bcrypt.compare(password, user.password)
        if (!user || !isMatchPassword) return res.json({message: 'Invalid credentials!'})
         const token = jwt.sign({user_id:user.id}, process.env.SECRET_KEY, {expiresIn: '7d'})
-       return res.json({message: 'Success', token})
+       return res.json({ message: 'Success', token })
     } catch (error) {
         console.log('error sa login: ', error)
         return error

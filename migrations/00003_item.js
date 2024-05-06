@@ -22,7 +22,8 @@ module.exports = {
       //   defaultValue: Sequelize.UUIDV4
       // },
       sku: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        // unique: true
       },
       qty: {
         type: Sequelize.INTEGER
@@ -39,7 +40,7 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      title_slug: {
+      slug: {
         type: Sequelize.STRING,
       },
       short_description: {

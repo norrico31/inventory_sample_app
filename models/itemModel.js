@@ -22,7 +22,8 @@ const Item = sequelize.define('item', {
     //   defaultValue: DataTypes.UUIDV4
     // },
     sku: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      unique: true
     },
     qty: {
       type: DataTypes.INTEGER
@@ -30,17 +31,15 @@ const Item = sequelize.define('item', {
     minStockLvl: {
       type: DataTypes.INTEGER
     },
-    location: {
-      type: DataTypes.STRING
-    },
     category: {
       type: DataTypes.STRING
     },
     title: {
       type: DataTypes.STRING
     },
-    title_slug: {
+    slug: {
       type: DataTypes.STRING,
+      // unique: true
     },
     short_description: {
       type: DataTypes.STRING
@@ -66,6 +65,9 @@ const Item = sequelize.define('item', {
     batch_no: {
       type: DataTypes.STRING,
     }
+    // location: {
+    //   type: DataTypes.STRING
+    // },
     // expirationDate: { type: DataTypes.DATEONLY },
     // barcode: { type: DataTypes.STRING }
     // imgSrc: {

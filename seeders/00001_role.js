@@ -21,8 +21,8 @@ module.exports = {
       },
       {
         id: uuidv4(),
-        name: 'User',
-        description: 'user'
+        name: 'Employee',
+        description: 'employee'
       },
     ], {});
   },
