@@ -30,7 +30,8 @@ npm install
 ### NOTE
 * This app automatically create database based on your configuration (No configuration complexity). 
 * Run (Xampp / Wampp / Laragon) for Mysql localhost server
-* Check the username, password and port of localhost server for sequelize config.json and .env
+* Check the username, password and port of localhost server for sequelize config.json
+* Create .env file and setup config base on your local server (see .env.sample)
 * Go to config.json and name your database.
 
 
