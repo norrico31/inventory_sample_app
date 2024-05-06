@@ -15,7 +15,10 @@ An in-depth paragraph about your project and overview of use.
 
 ### Installing
 
-* Forked this repository
+* Forked the repository
+```
+git clone https://github.com/norrico31/inventory_sample_app.git
+```
 * cd into the repo
 * Install node_modules
 ```
@@ -36,23 +39,23 @@ npm install
 ```
 npm run db:drop
 ```
-* Create database 
+* CREATE database 
 ```
 npm run db:create
 ```
-* Database migration
+* Migration
 ```
 npm run db:migrate
 ```
-* Database undo migration
+* Undo migration
 ```
 npm run db:migrate:undo
 ```
-* Database seeder
+* Seeder
 ```
 npm run db:seed
 ```
-* Database undo seed
+* Undo seed
 ```
 npm run db:seed:undo
 ```
@@ -70,13 +73,13 @@ npm run dev
 ```
 npm run start
 ```
-
+<!-- 
 ## Help
 
 Any advise for common problems or issues.
 ```
 command to run if program contains helper info
-```
+``` -->
 
 ## Authors
 
