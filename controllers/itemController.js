@@ -85,20 +85,20 @@ async function updateItem(req, res) {
     try {
         const item = await Item.findByPk(itemId)
         if (!item) return res.json({message: 'Item not found!'})
-        item.sku = sku
-        item.qty = qty
-        item.minStockLvl = minStockLvl
-        item.category = category
-        item.title = title
-        item.slug = slug
-        item.short_description = short_description
-        item.description = description
-        item.cost = cost
-        item.price = price
-        item.discounted_price = discounted_price
-        item.tag = tag
-        item.status = status
-        item.batch_no = batch_no
+        item.sku = !sku ? item.sku : sku;
+        item.qty = !qty ? item.qty : qty; 
+        item.minStockLvl = !minStockLvl ? item.minStockLvl : minStockLvl;
+        item.category = !category ? item.category : category;
+        item.title = title ? title : item.title
+        item.slug = slug ? slug : item.slug
+        item.short_description = short_description ? short_description : item.short_description
+        item.description = description ? description : item.description;
+        item.cost = cost ? cost : item.cost;
+        item.price = price ? price : item.price
+        item.discounted_price = discounted_price ? discounted_price : item.discounted_price;
+        item.tag = tag ? tag : item.tag
+        item.status = status ? status : item.status
+        item.batch_no = batch_no ? batch_no : item.batch_no;
         const updatedItem = await item.save()
         return res.json({message: 'Update item successfully', data: updatedItem})
     } catch (error) {
